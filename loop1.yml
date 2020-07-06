@@ -1,0 +1,10 @@
+#vi loop_conditional.yml
+---
+ - hosts: redhat
+   become: yes
+   tasks:
+   - name: install
+     yum:
+      name: "{{ item }}"
+     loop: ["wget","curl","nginx"]
+

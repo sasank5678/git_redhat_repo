@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - name: Print dict values
+     debug: 
+      msg: "{{ items.keys }}" 
+     with_dict: {a: 1,b: 2,c: 3}

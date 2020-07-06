@@ -1,0 +1,12 @@
+---
+ - hosts: all
+   become: yes
+   vars:
+    fruits: [1,2,3,4,5]
+    users: 
+     name: Datta
+     password: 12345 
+   tasks: 
+   - name: Print list items
+     debug:
+      msg: "{{ users.values }}"

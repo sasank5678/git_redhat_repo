@@ -1,0 +1,11 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - name: install apps in redhat
+     yum:
+      name: "{{ abc }}"
+      present: yes
+     loop: ["wget","curl"]
+     when: ansible_distribution == "redhat"
+

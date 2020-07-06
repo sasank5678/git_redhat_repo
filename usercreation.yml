@@ -1,0 +1,24 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - name: create user kishore
+     user:
+      name: kishore
+      password: '$1$Qkq9B1Eq$HNMPi84liDgc29.eOENUn/'
+      shell: /bin/bash
+      state: present
+      home: /home/dattaseva
+   - name: copy ssh key to user kishore
+     when: not ansible_check_mode
+     authorized_key: 
+      user: kishore
+      state: present
+      key: "{{ item }}"
+     with_file:
+      - ~/.ssh/id_rsa.pub
+   - name: Add user kishore to visudo file.
+     lineinfile:
+      path: /etc/sudoers
+      line: "kishore ALL=(ALL:ALL) NOPASSWD:ALL"
+   

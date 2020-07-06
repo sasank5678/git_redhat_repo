@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - name: Installing app in redhat
+     when: ansible_distribution == "redhat"
+     yum:
+      name: httpd
+      present: yes

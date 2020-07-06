@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:
+   users:
+    name: kishore
+    age: 34
+  tasks:
+  - name: Print variables
+    debug:
+     msg: "User name is {{ item.value }}" 
+    loop: "{{ lookup('dict', users) }}"   

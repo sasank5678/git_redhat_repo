@@ -1,0 +1,12 @@
+--- 
+ - hosts: all
+   become: yes
+   vars:
+    list1 : ['nitin','karthik','hrushikesh']
+   tasks:
+   - name: User creation "{{ item }}"
+     user:
+      name: "{{ item }}"
+      password: "$1$EQzyh4yj$/ujZpUKRe9xR7Y7WEoGei1"
+      shell: /bin/bash
+     loop: "{{ list1 }}"

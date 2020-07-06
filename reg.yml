@@ -1,0 +1,10 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - name: disk capacity
+     command: df -h
+     register: op1
+   - name: print the op
+     debug:
+      msg: "{{op1}}"
